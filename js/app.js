@@ -47,5 +47,5 @@ const formatoPorcentaje = (valor) => {
 
 const cargarCabecero = () => {
     let presupuesto = totalIngresos() - totalEgresos();
-    let procentajeEgreso = totalEgresos()/totalIngresos();
+    let porcentajeEgreso = totalEgresos()/totalIngresos();
 }   
