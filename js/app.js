@@ -68,9 +68,9 @@ const cargarIngresos = () => {
 const crearIngresoHTML = (ingreso) => {
     return `
         <div class="elemento limpiarEstilos">
-            <div class="elemento_descripcion">${ingreso.desciprcion}</div>
+            <div class="elemento_descripcion">${ingreso.descripcion}</div>
             <div class="derecha limpiarEstilos">
-                <div class="elemento_valor>+ ${formatoMoneda(ingreso.valor)}</div>
+                <div class="elemento_valor">+ ${formatoMoneda(ingreso.valor)}</div>
                 <div class="elemento_eliminar">
                     <button class="elemento_eliminar--btn" onclick="eliminarIngreso(${ingreso.id})">
                         <ion-icon name="close-circle-outline"></ion-icon>
@@ -91,7 +91,7 @@ const cargarEgresos = () => {
 };
 
 const crearEgresoHTML = (egreso) => {
-    let porcentaje = egreso.valor / totalEgresos();
+    let porcentaje = totalEgresos() > 0 ? egreso.valor/totalEgresos() : 0;
 
     return `
         <div class="elemento limpiarEstilos">
@@ -110,6 +110,32 @@ const crearEgresoHTML = (egreso) => {
 };
 
 
-const cargarApp = () => {
+const eliminarIngreso = (id) => {
+    const indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
+    ingresos.splice(indiceEliminar, 1);
+    cargarCabecero();
+    cargarIngresos();
+};
 
+const eliminarEgreso = (id) => {
+    const indiceEliminar = egresos.findIndex(egreso => egreso.id === id);
+    egresos.splice(indiceEliminar, 1);
+    cargarCabecero();
+    cargarEgresos()
+};
+
+const agregarDatos = () => {
+    const forma = document.getElementById("forma");
+    const tipo = document.getElementById("tipo").value;
+    const descripcion = document.getElementById("descripcion").value;
+    const valor = document.getElementById("forma").value;
+
+    if ()
+}
+
+const cargarApp = () => {
+    cargarCabecero();
+    cargarIngresos();
+    cargarEgresos();
+    document.getElementById("boton-agregar").addEventListener("click", agregarDatos)
 }
