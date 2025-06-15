@@ -125,13 +125,27 @@ const eliminarEgreso = (id) => {
 };
 
 const agregarDatos = () => {
-    const forma = document.getElementById("forma");
+    event.preventDefault();
+    
     const tipo = document.getElementById("tipo").value;
     const descripcion = document.getElementById("descripcion").value;
-    const valor = document.getElementById("forma").value;
+    const valor = parseFloat(document.getElementById("valor").value);
 
-    if ()
-}
+    if (descripcion.trim() !== "" && !isNaN(valor)) {
+        if (tipo === "ingreso"){
+            ingresos.push(new Ingreso(descripcion, valor));
+            cargarIngresos();
+        } else {
+            egresos.push(new Egreso(descripcion, valor));
+            cargarEgresos();
+        }
+        cargarCabecero();
+
+        document.getElementById("descripcion").value = "";
+        document.getElementById("valor").value = "";
+        
+    }
+};
 
 const cargarApp = () => {
     cargarCabecero();
