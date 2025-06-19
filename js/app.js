@@ -143,6 +143,7 @@ const agregarDatos = () => {
 
         document.getElementById("descripcion").value = "";
         document.getElementById("valor").value = "";
+        document.getElementById("tipo").value = "ingreso"; 
         
     }
 };
